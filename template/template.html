@@ -156,7 +156,7 @@
     <p>{{ my_dict.template }} <a href='{% url "sample" %}' download="template2.html">{{ my_dict.sample }}</a></p>
     {{ form.template }}
     
-    <p>{{ my_dict.txt }}<a href='{% url "sampletext" %}' download="sampletext.txt">{{ my_dict.sample }}</a></p>
+    <p>{{ my_dict.txt }}<a href='{% url "sampletext" %}' download="sampletext.xlsx">{{ my_dict.sample }}</a></p>
     {{ form.file }}
     
     <input type="submit" value="{{ my_dict.gen }}" id="submitBtn">
