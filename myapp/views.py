@@ -61,7 +61,6 @@ def make_zip(request):
             name = form.cleaned_data.get('name')
             template = form.cleaned_data.get('template')
             uploaded_file = form.cleaned_data.get('file')
-            print(uploaded_file.name)
             destination = BytesIO(uploaded_file.read())
             destination1 = BytesIO(template.read())
             try: 
@@ -77,7 +76,6 @@ def make_zip(request):
             except Exception as e:
                 form =submit_form()
                 response = HttpResponse(f"Error :{e}")
-                shutil.rmtree(os.path.join('dirs', name))
                 return response
         else:
             return render(request, 'template.html', {'form': form,'my_dict':my_dict})
