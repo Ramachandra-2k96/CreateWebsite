@@ -63,5 +63,11 @@ Your feedback is crucial to us! If you have any comments, suggestions, or encoun
 ## Example
 
 For a quick example, check the [Python code](https://github.com/Ramachandra-2k96/Python/tree/b74e7643e7b07392cac47add9188f151ecc828d3/Personalised%20website).
+Here is the demo vedio of using our website:
+<video width="320" height="240" controls>
+  <source src="blob:https://www.linkedin.com/fb611102-b49c-4b4f-a12a-fe7c0df7861a" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 
 Thank you for choosing WebsiteCreation! Happy coding!
