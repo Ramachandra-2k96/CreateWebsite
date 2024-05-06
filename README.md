@@ -13,7 +13,7 @@ WebsiteCreation simplifies the process of creating individualized websites for s
 3. **Upload Student Data:** Utilize the `StudentWebsite.xlsx` or `StudentWebsite.csv` file, including student information in the format:
 | Year of Admission | Branch | USN         | Name       | Email         | Mobile Number | Image Link                                                                                                                     |
 |-------------------|--------|-------------|------------|---------------|---------------|--------------------------------------------------------------------------------------------------------------------------------|
-| 2021              | CS     | 4MW21CS001  | Nishita    | a@gmail.com   | #NAME?        | ![Image](https://th.bing.com/th/id/OIG2.jR6rWgNLrCpjuiK4fNh9?w=270&h=270&c=6&r=0&o=5&pid=ImgGn)                            |
+| 2021              | CS     | 4MW21CS001  | Nishita    | a@gmail.com   | #NAME?        |https://th.bing.com/th/id/OIG2.jR6rWgNLrCpjuiK4fNh9?w=270&h=270&c=6&r=0&o=5&pid=ImgGn                            |
 | 2021              | CS     | 4MW21CS002  | Yukta      | b@gmail.com   | #NAME?        | ![Image](https://th.bing.com/th/id/OIG2.jR6rWgNLrCpjuiK4fNh9?w=270&h=270&c=6&r=0&o=5&pid=ImgGn)                            |
 | 2021              | CS     | 4MW21CS003  | Navya      | c@gmail.com   | #NAME?        | ![Image](https://th.bing.com/th/id/OIG2.jR6rWgNLrCpjuiK4fNh9?w=270&h=270&c=6&r=0&o=5&pid=ImgGn)                            |
 | 2021              | CS     | 4MW21CS004  | Katyayini  | d@gmail.com   | #NAME?        | ![Image](https://th.bing.com/th/id/OIG2.jR6rWgNLrCpjuiK4fNh9?w=270&h=270&c=6&r=0&o=5&pid=ImgGn)                            |
