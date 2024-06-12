@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Additional styles for fixed header */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background-color: #2c3e50; /* Dark blue */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom styling for header */
+        .header-link {
+            color: #ecf0f1; /* Light gray */
+            font-weight: 500;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+            transition: color 0.3s ease-in-out;
+        }
+
+        .header-link:hover {
+            color: #3498db; /* Light blue on hover */
+        }
+
+        .header-logo {
+            color: #ecf0f1; /* Light gray */
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+            transition: color 0.3s ease-in-out;
+        }
+
+        .header-logo:hover {
+            color: #3498db; /* Light blue on hover */
+        }
+
+        /* Hero section styles */
+        .hero-section {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+            color: #ffffff; /* White text */
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+            /* About section styles */
+        .about-section {
+            
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            color: #ffffff; /* White text */
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #ffffff; /* White text */
+        }
+
+        .about-content p {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #ffffff; /* White text */
+            margin-bottom: 2rem;
+        }
+
+        .content-section{
+            padding :200px 400px;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+        }
+        .contact-section
+        {
+             padding :200px 400px;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+        }
+        /* Parallax Effect */
+        .parallax {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+
+<body style="background: url('https://raw.githubusercontent.com/Ramachandra-2k96/image/main/15442020_5590457.jpg') no-repeat fixed; background-size: cover;" class="font-sans leading-normal tracking-normal bg-fixed bg-cover bg-center">
+
+    <!-- Header -->
+    <header class="w-full bg-blue-200 fixed-header">
+        <!-- Navbar -->
+        <nav class="container mx-auto flex items-center justify-between flex-wrap p-6">
+            <!-- Logo -->
+            <div class="flex items-center flex-shrink-0 mr-6">
+                <a href="#" class="header-logo">My Portfolio</a>
+            </div>
+            <!-- Navigation Links -->
+            <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+                <div class="text-lg lg:flex-grow text-right">
+                    <a href="#" class="block mt-4 lg:inline-block lg:mt-0 header-link hover:text-gray-900 mr-4">
+                        Home
+                    </a>
+                    <a href="#about-content" class="block mt-4 lg:inline-block lg:mt-0 header-link hover:text-gray-900 mr-4">
+                        About
+                    </a>
+                    <a href="#content-section" class="block mt-4 lg:inline-block lg:mt-0 header-link hover:text-gray-900 mr-4">
+                        Portfolio
+                    </a>
+                    <a href="#contact-section" class="block mt-4 lg:inline-block lg:mt-0 header-link hover:text-gray-900">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section section relative">
+        <div class="hero-overlay overlay"></div>
+        <div class="hero-content content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Your one-stop destination for stunning web designs.</p>
+            <a href="#"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full inline-block">Get
+                Started</a>
+        </div>
+        <div class="parallax"></div>
+    </section>
+
+   <!-- About Section -->
+<section class="about-section py-12" id="about-content">
+    <div class="container mx-auto flex flex-col lg:flex-row items-center">
+        <!-- Text Content -->
+        <div class="lg:w-1/2 lg:pr-12 mb-6 lg:mb-0">
+            <h2 class="text-3xl font-semibold text-white-800 mb-4">About Me</h2>
+            <p class="text-lg text-white-700 leading-relaxed">I am $NAME, a passionate and creative student with a strong interest in $BRANCH. I love turning ideas into reality through coding and design, and I'm constantly seeking new challenges to improve my skills.</p>
+        </div>
+        <!-- Student Photo -->
+        <div class="lg:w-1/2">
+            <img src="$PHOTO" alt="Student Photo" class="rounded-lg shadow-md">
+        </div>
+    </div>
+</section>
+
+<section id ="content-section"class="content-section py-12 ">
+    <div class="container mx-auto">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-semibold text-white mb-6">Content Section</h2>
+            <p class="text-lg text-white leading-relaxed mb-8">This is a modern content section with a clean design and easy-to-read typography. You can customize it according to your needs and preferences.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">project 1</h3>
+                    <p class="text-gray-700 leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">project 2</h3>
+                    <p class="text-gray-700 leading-relaxed">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">project 3</h3>
+                    <p class="text-gray-700 leading-relaxed">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">project 4</h3>
+                    <p class="text-gray-700 leading-relaxed">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id  ="contact-section"class="contact-section py-12">
+    <div class="container mx-auto">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-semibold text-white mb-6">Get in Touch</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Send a Message</h3>
+                    <form action="#" method="post">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium">Name</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md bg-gray-50 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium">Email</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md bg-gray-50 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 font-medium">Message</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md bg-gray-50 border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300 ease-in-out">Send Message</button>
+                    </form>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Contact Information</h3>
+                    <ul class="text-gray-700">
+                        <li class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 0a10 10 0 0 1 7.071 17.071c-1.02 1.02-2.24 1.788-3.535 2.292a9.973 9.973 0 0 1-8.12 0A9.974 9.974 0 0 1 2.929 17.07 9.974 9.974 0 0 1 0 10c0-2.668 1.036-5.162 2.929-7.07C4.837 1.036 7.331 0 10 0zm2.92 3.646c1.828 1.828 2.83 4.249 2.83 6.827 0 2.578-.996 4.999-2.828 6.828-1.83 1.83-4.251 2.828-6.83 2.828-2.578 0-4.998-.998-6.828-2.828C1.172 15 0 12.579 0 10s1.172-4.998 3.646-7.072C5.002 1.172 7.422 0 10 0c2.578 0 4.998 1.172 7.072 3.646zM7.778 6.73a.75.75 0 0 1 1.06-1.06l2 2a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.06-1.06L9.218 8H4.75a.75.75 0 0 1 0-1.5h4.468l-1.44-1.77z"/>
+                            </svg>
+                            <span>Email:</span> $EMAIL
+                        </li>
+                        <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 0a10 10 0 0 1 7.071 17.071c-1.02 1.02-2.24 1.788-3.535 2.292a9.973 9.973 0 0 1-8.12 0A9.974 9.974 0 0 1 2.929 17.07 9.974 9.974 0 0 1 0 10c0-2.668 1.036-5.162 2.929-7.07C4.837 1.036 7.331 0 10 0zm2.92 3.646c1.828 1.828 2.83 4.249 2.83 6.827 0 2.578-.996 4.999-2.828 6.828-1.83 1.83-4.251 2.828-6.83 2.828-2.578 0-4.998-.998-6.828-2.828C1.172 15 0 12.579 0 10s1.172-4.998 3.646-7.072C5.002 1.172 7.422 0 10 0c2.578 0 4.998 1.172 7.072 3.646zM7.778 6.73a.75.75 0 0 1 1.06-1.06l2 2a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.06-1.06L9.218 8H4.75a.75.75 0 0 1 0-1.5h4.468l-1.44-1.77z"/>
+                            </svg>
+                            <span>Phone:</span> $PHONE
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="bg-gray-800 py-4">
+    <div class="container mx-auto text-center text-gray-300">
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+        <p>Designed with <span class="text-red-500">&hearts;</span> by $NAME</p>
+    </div>
+</footer>
+
+    <script>
+        // Parallax Effect
+        window.addEventListener('scroll', function () {
+            const parallax = document.querySelectorAll('.parallax');
+            parallax.forEach(section => {
+                let scrollPosition = window.pageYOffset;
+                let translateY = scrollPosition * 0.5 + 'px';
+                section.style.transform = 'translateY(' + translateY + ')';
+            });
+        });
+    </script>
+
+</body>
+
+</html>

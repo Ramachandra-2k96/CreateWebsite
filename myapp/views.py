@@ -22,14 +22,14 @@ def set_cookie(request):
     return render(request, 'index.html')
 
 def shtml(request):
-    file_path = 'static/template2.html'
+    file_path = 'myapp/static/template2.html'
     with open(file_path, 'rb') as f1:
         response = HttpResponse(f1.read(), content_type='text/html')  
         response['Content-Disposition'] = f'attachment; filename="{os.path.basename(file_path)}"'
     return response 
 
 def stxt(request):
-    file_path = 'static/StudentWebsite.xlsx'
+    file_path = 'myapp/static/StudentWebsite.xlsx'
     with open(file_path, 'rb') as f1:
         response = HttpResponse(f1.read(), content_type='text/html')  
         response['Content-Disposition'] = f'attachment; filename="{os.path.basename(file_path)}"'
