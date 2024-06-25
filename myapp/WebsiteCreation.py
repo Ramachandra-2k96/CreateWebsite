@@ -1,3 +1,4 @@
+# file2.py
 from django.http import HttpResponse
 import shutil
 import os
@@ -8,10 +9,9 @@ from .mod_string_de import strings as de
 from .mod_string_en import strings as en
 from .mod_string_kn import strings as kn
 from .mod_string_hi import strings as hi
-from django.conf import settings
-import tempfile
 
 def create_main(lang, name, uploaded_file, template, type):
+    # Determine string values based on language
     if lang == "Deutsch":
         s1, s2, s3, s4, s5, s6, s7 = de()
     elif lang == "Española":
@@ -23,37 +23,14 @@ def create_main(lang, name, uploaded_file, template, type):
     else:
         s1, s2, s3, s4, s5, s6, s7 = en()
 
-    def time1():
-        import datetime as dt
-        today = dt.datetime.now()
-        y1 = str(today.year)
-        m1 = str(today.month).zfill(2)
-        d1 = str(today.day).zfill(2)
-        h1 = str(today.hour).zfill(2)
-        m2 = str(today.minute).zfill(2)
-        s2 = str(today.second).zfill(2)
-        fname2 = '_' + y1 + m1 + d1 + '_' + h1 + m2 + s2
-        return fname2
+    # Generate unique output name
+    output_name = f'WebsiteCreation_{name}_{time.strftime("%Y%m%d_%H%M%S")}.zip'
 
-    college = name
-    temp_media_root = tempfile.mkdtemp()
+    # Create website content in-memory
+    zip_buffer = wc(name, uploaded_file, template, type)
 
-    try:
-        result = wc(college, uploaded_file, template, type)
+    # Prepare HTTP response with the in-memory ZIP file
+    response = HttpResponse(zip_buffer.getvalue(), content_type='application/zip')
+    response['Content-Disposition'] = f'attachment; filename="{output_name}"'
 
-        output_zip = 'WebsiteCreation_' + college + time1()
-        output_zipfile = os.path.join(temp_media_root, output_zip)
-        shutil.make_archive(output_zipfile, 'zip', temp_media_root)
-
-        s5 = f"{output_zip}.zip {s4}"
-        time.sleep(1)
-
-        with open(output_zipfile + '.zip', 'rb') as zip_file:
-            response = HttpResponse(zip_file.read(), content_type='application/zip')
-            response['Content-Disposition'] = f'attachment; filename="{os.path.basename(output_zipfile)}.zip"'
-        
-        os.remove(output_zipfile + '.zip')
-        return (response, s5, s1)
-
-    finally:
-        shutil.rmtree(temp_media_root)
+    return response, f"{output_name} {s4}", f"{output_name} {s1}"

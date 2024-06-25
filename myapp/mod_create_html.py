@@ -1,4 +1,4 @@
-def create_html(file1,param1,outputfile,dict1):
+def create_html(file1,param1,dict1):
     import pandas as pd
     input_name =param1
     df = pd.DataFrame(dict1)
@@ -16,5 +16,6 @@ def create_html(file1,param1,outputfile,dict1):
     info1 = info1.replace('$EMAIL',email)
     info1 = info1.replace('$PHONE',m_number)
     info1 = info1.replace('$PHOTO',photo)
-    with open(outputfile,'w')as file:
-        file.write(info1)
+    print(info1)
+    return info1
+    
