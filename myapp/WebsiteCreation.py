@@ -8,6 +8,7 @@ from .mod_string_de import strings as de
 from .mod_string_en import strings as en
 from .mod_string_kn import strings as kn
 from .mod_string_hi import strings as hi
+from django.conf import settings
 
 def create_main(lang, name, uploaded_file, template,type):
     if lang == "Deutsch":
@@ -36,10 +37,10 @@ def create_main(lang, name, uploaded_file, template,type):
     result = wc(college, uploaded_file, template,type)
     output_zip = 'WebsiteCreation_' + college + time1()
     output_zipfile = os.path.join('static', output_zip)
-    shutil.make_archive(output_zipfile, 'zip', os.path.join('dirs', college))
+    shutil.make_archive(output_zipfile, 'zip', os.path.join(settings.MEDIA_ROOT, college))
     s5 =f"{output_zip}.zip {s4}"
     time.sleep(1)
-    shutil.rmtree(os.path.join('dirs', college))
+    shutil.rmtree(os.path.join(settings.MEDIA_ROOT, college))
     s1=f"{output_zip}.zip "+s1
     with open(output_zipfile + '.zip', 'rb') as zip_file:
         response = HttpResponse(zip_file.read(), content_type='application/zip')
