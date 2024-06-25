@@ -9,18 +9,19 @@ from .mod_string_en import strings as en
 from .mod_string_kn import strings as kn
 from .mod_string_hi import strings as hi
 from django.conf import settings
+import tempfile
 
-def create_main(lang, name, uploaded_file, template,type):
+def create_main(lang, name, uploaded_file, template, type):
     if lang == "Deutsch":
-        s1, s2, s3, s4,s5,s6,s7 = de()
+        s1, s2, s3, s4, s5, s6, s7 = de()
     elif lang == "Española":
-        s1, s2, s3, s4,s5,s6,s7 = es()
+        s1, s2, s3, s4, s5, s6, s7 = es()
     elif lang == 'Kannada':
-        s1, s2, s3, s4,s5,s6,s7 = kn()
+        s1, s2, s3, s4, s5, s6, s7 = kn()
     elif lang == 'Hindi':
-        s1, s2, s3, s4,s5,s6,s7 = hi()
+        s1, s2, s3, s4, s5, s6, s7 = hi()
     else:
-        s1, s2, s3, s4 ,s5,s6,s7 = en()
+        s1, s2, s3, s4, s5, s6, s7 = en()
 
     def time1():
         import datetime as dt
@@ -33,17 +34,26 @@ def create_main(lang, name, uploaded_file, template,type):
         s2 = str(today.second).zfill(2)
         fname2 = '_' + y1 + m1 + d1 + '_' + h1 + m2 + s2
         return fname2
+
     college = name
-    result = wc(college, uploaded_file, template,type)
-    output_zip = 'WebsiteCreation_' + college + time1()
-    output_zipfile = os.path.join('static', output_zip)
-    shutil.make_archive(output_zipfile, 'zip', os.path.join(settings.MEDIA_ROOT, college))
-    s5 =f"{output_zip}.zip {s4}"
-    time.sleep(1)
-    shutil.rmtree(os.path.join(settings.MEDIA_ROOT, college))
-    s1=f"{output_zip}.zip "+s1
-    with open(output_zipfile + '.zip', 'rb') as zip_file:
-        response = HttpResponse(zip_file.read(), content_type='application/zip')
-        response['Content-Disposition'] = f'attachment; filename="{os.path.basename(output_zipfile)}.zip"'
-    os.remove(output_zipfile+'.zip')
-    return (response,s5,s1)
+    temp_media_root = tempfile.mkdtemp()
+
+    try:
+        result = wc(college, uploaded_file, template, type)
+
+        output_zip = 'WebsiteCreation_' + college + time1()
+        output_zipfile = os.path.join(temp_media_root, output_zip)
+        shutil.make_archive(output_zipfile, 'zip', temp_media_root)
+
+        s5 = f"{output_zip}.zip {s4}"
+        time.sleep(1)
+
+        with open(output_zipfile + '.zip', 'rb') as zip_file:
+            response = HttpResponse(zip_file.read(), content_type='application/zip')
+            response['Content-Disposition'] = f'attachment; filename="{os.path.basename(output_zipfile)}.zip"'
+        
+        os.remove(output_zipfile + '.zip')
+        return (response, s5, s1)
+
+    finally:
+        shutil.rmtree(temp_media_root)
