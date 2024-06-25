@@ -1,6 +1,7 @@
 from .mod_create_html import create_html as ch
 import os
 import pandas as pd
+from django.conf import settings
 def website_creation(college,file1,template,type):
     file1 = file1
     college =college
@@ -39,7 +40,7 @@ def website_creation(college,file1,template,type):
     def Directory_creation(college,dict1):
         import os
         for year, usn, subject in zip(dict1['years'], dict1['usn'], dict1['subjects']):
-            os.makedirs(os.path.join('dirs',college+'/'+str(year)+'/'+subject+'/'+usn),exist_ok =True)
+            os.makedirs(os.path.join(settings.MEDIA_ROOT,college+'/'+str(year)+'/'+subject+'/'+usn),exist_ok =True)
 
     """This below function will help to create files inside a folder """
     def file_creation(root_directory,template,dict1):
@@ -53,5 +54,5 @@ def website_creation(college,file1,template,type):
     #call all the functions here for making it easy to use for User
     dict1= content_creation(file1,type)
     Directory_creation(college,dict1)
-    file_creation(os.path.join('dirs',college),template,dict1)             
+    file_creation(os.path.join(settings.MEDIA_ROOT,college),template,dict1)             
     return "Directory and Files are created successfully"
