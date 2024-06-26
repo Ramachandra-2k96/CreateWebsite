@@ -12,6 +12,7 @@ from .mod_string_en import strings as en
 from .mod_string_kn import strings as kn
 from .mod_string_hi import strings as hi
 from io import BytesIO
+from django.conf import settings
 
 def set_cookie(request):
     if request.method == 'POST':
@@ -22,18 +23,18 @@ def set_cookie(request):
     return render(request, 'index.html')
 
 def shtml(request):
-    file_path = 'myapp/static/template2.html'
+    file_path=os.path.join(settings.STATIC_ROOT,'template2.html')
     with open(file_path, 'rb') as f1:
         response = HttpResponse(f1.read(), content_type='text/html')  
         response['Content-Disposition'] = f'attachment; filename="{os.path.basename(file_path)}"'
     return response 
 
 def stxt(request):
-    file_path = 'myapp/static/StudentWebsite.xlsx'
+    file_path = os.path.join(settings.STATIC_ROOT,'StudentWebsite.xlsx')
     with open(file_path, 'rb') as f1:
-        response = HttpResponse(f1.read(), content_type='text/html')  
+        response = HttpResponse(f1.read(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')  
         response['Content-Disposition'] = f'attachment; filename="{os.path.basename(file_path)}"'
-    return response 
+    return response
 
 def make_zip(request):
     lang  = request.COOKIES.get('selected_value', 'English')
